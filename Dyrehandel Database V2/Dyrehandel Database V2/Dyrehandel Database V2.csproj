@@ -52,7 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ButikModel.cs" />
+    <Compile Include="KundeModel.cs" />
     <Compile Include="PersonModel.cs" />
+    <Compile Include="ProdukterModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqliteDataAccess.cs" />
