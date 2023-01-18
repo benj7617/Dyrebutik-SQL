@@ -1,3 +1,0 @@
-C:\Users\Skole\OneDrive - TEC\Programmering\Dyrehandel Database\da codes\Dyrehandel Database\Dyrehandel Database\obj\Debug\Dyrehandel Database.csproj.AssemblyReference.cache
-C:\Users\Skole\OneDrive - TEC\Programmering\Dyrehandel Database\da codes\Dyrehandel Database\Dyrehandel Database\obj\Debug\Dyrehandel Database.csproj.SuggestedBindingRedirects.cache
-C:\Users\Skole\OneDrive - TEC\Programmering\Dyrehandel Database\da codes\Dyrehandel Database\Dyrehandel Database\obj\Debug\Dyrehandel Database.csproj.CoreCompileInputs.cache
