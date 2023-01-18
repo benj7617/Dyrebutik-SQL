@@ -24,17 +24,17 @@ namespace Dyrehandel_Database_V2
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<KundeModel>("select * from Kunder", new DynamicParameters());
+                var output = cnn.Query<KundeModel>("select * from Kunde", new DynamicParameters());
                 return output.ToList();
             }
         }
 
         //Skab en ny person, og gem den til databasen - Ikke done
-        public static void SaveKunde(KundeModel person)
+        public static void SaveKunde(KundeModel Kunde)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("insert into person (Firstname, Lastname) values (@Firstname, @Lastname)", person);
+                cnn.Execute("insert into Kunde (Navn, Adresse, Postnummer, By) values (@Navn, @Adresse, @Postnummer, @By)", Kunde);
             }
         }
 

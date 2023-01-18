@@ -14,6 +14,26 @@ namespace Dyrehandel_Database_V2
 
             Console.WriteLine("Delen med at tilføje og fjerne folk fra listen med consol appen er ikek færdig endnu, og den data der accepteres skal ændres fra default til det vi kan bruge");
 
+            KundeModel p = new KundeModel();
+
+            p.Navn = "Jens";
+            p.Adresse = "Jørgenvej";
+            p.Postnummer = 9;
+            p.By = "Thyborøn";
+
+            SqliteDataAccess.SaveKunde(p);
+
+
+            //skaber liste over butikker
+            List<KundeModel> Kunde = new List<KundeModel>();
+            Kunde = SqliteDataAccess.LoadKunde();
+    
+            //printer dem
+            for (int i = 0; i < Kunde.Count; i++)
+            {
+                Console.WriteLine(Kunde[i].By);
+            }
+
             Console.ReadKey();
         }
     }
