@@ -20,17 +20,17 @@ namespace Dyrehandel_Database_V2
 
         //dem der er til kunderne
         //TIlføj alt data fra Kunder til en liste
-        public static List<PersonModel> LoadKunde()
+        public static List<KundeModel> LoadKunde()
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<PersonModel>("select * from Kunder", new DynamicParameters());
+                var output = cnn.Query<KundeModel>("select * from Kunder", new DynamicParameters());
                 return output.ToList();
             }
         }
 
         //Skab en ny person, og gem den til databasen - Ikke done
-        public static void SavePerson(PersonModel person)
+        public static void SaveKunde(KundeModel person)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -40,17 +40,17 @@ namespace Dyrehandel_Database_V2
 
         //dem der er til butikkerne
         //Tilføj alt fra butikken til en liste
-        public static List<PersonModel> LoadButik()
+        public static List<ButikModel> LoadButik()
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<PersonModel>("select * from Butik", new DynamicParameters());
+                var output = cnn.Query<ButikModel>("select * from Butik", new DynamicParameters());
                 return output.ToList();
             }
         }
 
         //ikke done
-        public static void SavePerson(PersonModel person)
+        public static void SavePerson(ButikModel person)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -60,16 +60,16 @@ namespace Dyrehandel_Database_V2
 
         //dem der er til Produkterne
         //tilføj alt info om produktet til liste
-        public static List<PersonModel> LoadPeople()
+        public static List<ProduktModel> LoadProdukt()
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<PersonModel>("select * from person", new DynamicParameters());
+                var output = cnn.Query<ProduktModel>("select * from Produkt", new DynamicParameters());
                 return output.ToList();
             }
         }
 
-        public static void SavePerson(PersonModel person)
+        public static void SaveProdukt(ProduktModel person)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
