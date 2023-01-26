@@ -9,15 +9,13 @@ namespace Dyrehandel_Database_V2
     internal class Program
     {
         public static List<KundeModel> Kunde;
+        public static List<ButikModel> Butik;
+        public static List<ProduktModel> Produkt;
 
         static void Main(string[] args)
         {
             //setup til switchboard
             bool isProgramExiting = false, isInputCorrect = false;
-
-            //skaber liste af kunder
-            //List<KundeModel> Kunde = new List<KundeModel>();
-            Kunde = SqliteDataAccess.LoadKunde();
 
             Console.WriteLine("Hej med dig det her er en butik med dyr, ikke en dyr butik heheheheheh");
             Console.WriteLine("Delen med at tilføje og fjerne folk fra listen med consol appen er ikek færdig endnu, og den data der accepteres skal ændres fra default til det vi kan bruge");
@@ -28,8 +26,16 @@ namespace Dyrehandel_Database_V2
             {
                 Console.Clear();
                 Console.WriteLine("Du har følgende muligheder: ");
+
                 Console.WriteLine("Tryk 1 for at tilføje en bruger: ");
                 Console.WriteLine("Tryk 2 for at vise brugere: ");
+
+                Console.WriteLine("Tryk 3 for at tilføje en butik: ");
+                Console.WriteLine("Tryk 4 for at vise butikker: ");
+
+                Console.WriteLine("Tryk 5 for at tilføje en vare: ");
+                Console.WriteLine("Tryk 6 for at vise varer: ");
+
                 Console.WriteLine("Tryk 0 for at lukke programmet: ");
 
                 //error Correction for switcboard
@@ -37,12 +43,17 @@ namespace Dyrehandel_Database_V2
                 isInputCorrect = false;
                 while (!isInputCorrect)
                 {
+                    //Loader databaserne
+                    Kunde = SqliteDataAccess.LoadKunde();
+                    Butik = SqliteDataAccess.LoadButik();
+                    Produkt = SqliteDataAccess.LoadProdukt();
+
                     string userInput = Console.ReadLine();
 
                     try
                     {
                         numberInput = int.Parse(userInput);
-                        if (numberInput >= 0 && numberInput <= 2)
+                        if (numberInput >= 0 && numberInput <= 6)
                         {
                             isInputCorrect = true;
                         }
@@ -75,6 +86,14 @@ namespace Dyrehandel_Database_V2
                     case 2:
                         visBrugere();
                         break;
+
+                    case 4:
+                        visButikker();
+                        break;
+
+                    case 6:
+                        visProdukter();
+                        break;
                     default:
                         break;
                 }
@@ -85,12 +104,27 @@ namespace Dyrehandel_Database_V2
         {
             KundeModel p = new KundeModel();
 
-            p.Navn = "Jens";
-            p.Adresse = "Jørgenvej";
-            p.Postnummer = 9;
-            p.By = "Thyborøn";
+            Console.WriteLine("Der er ikke noget error correction her endnu");
+            try
+            {
+                Console.WriteLine("Skriv navn");
+                p.Navn = Console.ReadLine();
+                Console.WriteLine("Skriv Adresse");
+                p.Adresse = Console.ReadLine();
+                Console.WriteLine("Skriv Postnummer");
+                p.Postnummer = int.Parse(Console.ReadLine());
+                Console.WriteLine("Skriv By");
+                p.By = Console.ReadLine();
 
-            SqliteDataAccess.SaveKunde(p);
+                SqliteDataAccess.SaveKunde(p);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Eow din adam du gjorde noget forkert");
+                throw;
+            }
+
+            
         }
 
         private static void visBrugere()
@@ -100,6 +134,42 @@ namespace Dyrehandel_Database_V2
             for (int i = 0; i < Kunde.Count; i++)
             {
                 Console.WriteLine(Kunde[i].Navn + " som bor på " + Kunde[i].Adresse + " i " + Kunde[i].By + " med postnummeret " + Kunde[i].Postnummer);
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Tryk 0 for at gå tilbage");
+            Console.ReadKey();
+        }
+
+        private static void tilføjButik()
+        {
+
+        }
+
+        private static void visButikker()
+        {
+            Console.Clear();
+            //printer dem
+            for (int i = 0; i < Butik.Count; i++)
+            {
+                Console.WriteLine("Butik nr. " + Butik[i].ButikID + " som ligger i " + Butik[i].Adresse + " " + Butik[i].Postnummer + " " + Butik[i].By );
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Tryk 0 for at gå tilbage");
+            Console.ReadKey();
+        }
+
+        private static void tilføjProdukt()
+        {
+
+        }
+
+        private static void visProdukter()
+        {
+            Console.Clear();
+            //printer dem
+            for (int i = 0; i < Produkt.Count; i++)
+            {
+                Console.WriteLine("Produkt ID: " + Produkt[i].ProduktID + " Antal: " + Produkt[i].Antal + " I kategorien " + Produkt[i].Kategori + " " );
             }
             Console.WriteLine("");
             Console.WriteLine("Tryk 0 for at gå tilbage");

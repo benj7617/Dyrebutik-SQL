@@ -9,7 +9,7 @@ namespace Dyrehandel_Database_V2
     public class ProduktModel
     {
         public int ProduktID { get; set; }
-        public string Race { get; set; }
+        public string Antal { get; set; }
         public string Kategori { get; set; }
         public int Pris { get; set; }
     }
