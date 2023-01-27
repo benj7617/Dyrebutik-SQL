@@ -86,11 +86,15 @@ namespace Dyrehandel_Database_V2
                     case 2:
                         visBrugere();
                         break;
-
+                    case 3:
+                        tilføjButik();
+                        break;
                     case 4:
                         visButikker();
                         break;
-
+                    case 5:
+                        tilføjProdukt();
+                        break;
                     case 6:
                         visProdukter();
                         break;
@@ -120,7 +124,7 @@ namespace Dyrehandel_Database_V2
             }
             catch (Exception)
             {
-                Console.WriteLine("Eow din adam du gjorde noget forkert");
+                Console.WriteLine("Eow din adam du gjorde noget forkert. Error 1");
                 throw;
             }
 
@@ -142,7 +146,24 @@ namespace Dyrehandel_Database_V2
 
         private static void tilføjButik()
         {
+            ButikModel p = new ButikModel();
 
+            try
+            {
+                Console.WriteLine("Skriv Adresse");
+                p.Adresse = Console.ReadLine();
+                Console.WriteLine("Skriv Postnummer");
+                p.Postnummer = int.Parse(Console.ReadLine());
+                Console.WriteLine("Skriv By");
+                p.By = Console.ReadLine();
+
+                SqliteDataAccess.SaveButik(p);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Eow din adam du gjorde noget forkert. Error 2");
+                throw;
+            }
         }
 
         private static void visButikker()
@@ -160,7 +181,24 @@ namespace Dyrehandel_Database_V2
 
         private static void tilføjProdukt()
         {
+            ProduktModel p = new ProduktModel();
 
+            try
+            {
+                Console.WriteLine("Skriv Antal");
+                p.Antal = int.Parse(Console.ReadLine());
+                Console.WriteLine("Skriv Kategori");
+                p.Kategori = Console.ReadLine();
+                Console.WriteLine("Skriv Pris");
+                p.Pris = int.Parse(Console.ReadLine());
+
+                SqliteDataAccess.SaveProdukt(p);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Eow din adam du gjorde noget forkert. Error 3");
+                throw;
+            }
         }
 
         private static void visProdukter()

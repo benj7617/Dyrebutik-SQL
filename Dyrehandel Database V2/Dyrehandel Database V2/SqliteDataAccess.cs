@@ -18,9 +18,9 @@ namespace Dyrehandel_Database_V2
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
         }
 
-        //dem der er til kunderne
-        //TIlføj alt data fra Kunder til en liste
-        public static List<KundeModel> LoadKunde()
+
+        //Kunde
+        public static List<KundeModel> LoadKunde() //Skab liste over kunder
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -28,9 +28,8 @@ namespace Dyrehandel_Database_V2
                 return output.ToList();
             }
         }
-
-        //Skab en ny person, og gem den til databasen - Ikke done
-        public static void SaveKunde(KundeModel Kunde)
+       
+        public static void SaveKunde(KundeModel Kunde) //Skab Kunde
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -38,9 +37,9 @@ namespace Dyrehandel_Database_V2
             }
         }
 
-        //dem der er til butikkerne
-        //Tilføj alt fra butikken til en liste
-        public static List<ButikModel> LoadButik()
+
+        //Butik
+        public static List<ButikModel> LoadButik() //skab liste over butiker
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -49,18 +48,17 @@ namespace Dyrehandel_Database_V2
             }
         }
 
-        //ikke done
-        public static void SavePerson(ButikModel person)
+        public static void SaveButik(ButikModel Butik) //skab butik
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("insert into person (Firstname, Lastname) values (@Firstname, @Lastname)", person);
+                cnn.Execute("insert into Butik (Adresse, Postnummer, By) values (@Adresse, @Postnummer, @By)", Butik);
             }
         }
 
-        //dem der er til Produkterne
-        //tilføj alt info om produktet til liste
-        public static List<ProduktModel> LoadProdukt()
+
+        //Produkt
+        public static List<ProduktModel> LoadProdukt() //skab liste over produkter
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -69,11 +67,11 @@ namespace Dyrehandel_Database_V2
             }
         }
 
-        public static void SaveProdukt(ProduktModel person)
+        public static void SaveProdukt(ProduktModel Produkt) // skab produkt
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("insert into person (Firstname, Lastname) values (@Firstname, @Lastname)", person);
+                cnn.Execute("insert into Produkt (Antal, Kategori, Pris) values (@Antal, @Kategori, @Pris)", Produkt);
             }
         }
 
