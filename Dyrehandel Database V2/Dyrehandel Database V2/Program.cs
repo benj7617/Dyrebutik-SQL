@@ -32,10 +32,14 @@ namespace Dyrehandel_Database_V2
 
                 Console.WriteLine("Tryk 3 for at tilføje en butik: ");
                 Console.WriteLine("Tryk 4 for at vise butikker: ");
+                Console.WriteLine("Tryk 5 for at vise hvilke vare en hvis butik har");
 
-                Console.WriteLine("Tryk 5 for at tilføje en vare: ");
-                Console.WriteLine("Tryk 6 for at vise varer: ");
-                Console.WriteLine("Tryk 7 for at fjerne et produkt");
+                Console.WriteLine("Tryk 6 for at tilføje en vare: ");
+                Console.WriteLine("Tryk 7 for at vise varer: ");
+                Console.WriteLine("Tryk 8 for at fjerne et produkt");
+                Console.WriteLine("Tryk 9 for at sortere efter intast pris");
+                
+                Console.WriteLine("Tryk 10 for at se pris for katte og hunde");
 
                 Console.WriteLine("Tryk 0 for at lukke programmet: ");
 
@@ -54,7 +58,7 @@ namespace Dyrehandel_Database_V2
                     try
                     {
                         numberInput = int.Parse(userInput);
-                        if (numberInput >= 0 && numberInput <= 7)
+                        if (numberInput >= 0 && numberInput <= 10)
                         {
                             isInputCorrect = true;
                         }
@@ -69,7 +73,7 @@ namespace Dyrehandel_Database_V2
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("Indtast venligst et tal mellem 0 og 7");
+                        Console.WriteLine("Indtast venligst et tal mellem 0 og 11");
                     }
                 }
 
@@ -94,13 +98,22 @@ namespace Dyrehandel_Database_V2
                         visButikker();
                         break;
                     case 5:
+                        visBestemButik();
+                        break
+                    case 6:
                         tilføjProdukt();
                         break;
-                    case 6:
+                    case 7:
                         visProdukter();
                         break;
-                    case 7:
+                    case 8:
                         fjernProdukter();
+                        break;
+                    case 9:
+                        sorterProdukter();
+                        break;
+                    case 10:
+                        hundKat();
                         break;
                     default:
                         break;
@@ -220,14 +233,26 @@ namespace Dyrehandel_Database_V2
         private static void fjernProdukter()
         {
             
-            Console.WriteLine("Vælg produkt id som skal fjernes");
+            /*Console.WriteLine("Vælg produkt id som skal fjernes");
             Console.WriteLine("");
             for (int i = 0; i < Produkt.Count; i++)
             {
                 Console.WriteLine("Produkt ID: " + Produkt[i].ProduktID);
-            }
+            }*/
             fjernProdukter();
             Console.ReadKey();
+        }
+        private static void visBestemButik()
+        {
+
+        }
+        private static void sorterProdukter()
+        {
+
+        }
+        private static void hundKat()
+        {
+
         }
     }
 }

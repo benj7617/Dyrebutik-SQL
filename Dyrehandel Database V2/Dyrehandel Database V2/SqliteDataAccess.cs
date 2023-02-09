@@ -79,7 +79,7 @@ namespace Dyrehandel_Database_V2
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("delete from produkter where ID=0");
+                cnn.Query("delete from Produkt where Kategori=1");
             }
         }
 
