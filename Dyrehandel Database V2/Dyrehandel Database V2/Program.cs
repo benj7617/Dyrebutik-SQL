@@ -54,7 +54,7 @@ namespace Dyrehandel_Database_V2
                     try
                     {
                         numberInput = int.Parse(userInput);
-                        if (numberInput >= 0 && numberInput <= 6)
+                        if (numberInput >= 0 && numberInput <= 7)
                         {
                             isInputCorrect = true;
                         }
@@ -69,7 +69,7 @@ namespace Dyrehandel_Database_V2
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("Indtast venligst et tal mellem 0 og 2");
+                        Console.WriteLine("Indtast venligst et tal mellem 0 og 7");
                     }
                 }
 
@@ -219,12 +219,15 @@ namespace Dyrehandel_Database_V2
         }
         private static void fjernProdukter()
         {
-            Console.Clear();
+            
+            Console.WriteLine("Vælg produkt id som skal fjernes");
+            Console.WriteLine("");
             for (int i = 0; i < Produkt.Count; i++)
             {
-                Console.WriteLine("Produkt ID: " + Produkt[i].ProduktID)
+                Console.WriteLine("Produkt ID: " + Produkt[i].ProduktID);
             }
-            
+            fjernProdukter();
+            Console.ReadKey();
         }
     }
 }
