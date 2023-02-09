@@ -26,3 +26,17 @@ C:\Users\Skole\Documents\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel 
 C:\Users\Skole\Documents\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\obj\Debug\Dyrehandel Database V2.csproj.CopyComplete
 C:\Users\Skole\Documents\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\obj\Debug\Dyrehandel Database V2.exe
 C:\Users\Skole\Documents\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\obj\Debug\Dyrehandel Database V2.pdb
+C:\Users\cwalk\OneDrive\Dokumenter\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\bin\Debug\DyrehandelDB.db
+C:\Users\cwalk\OneDrive\Dokumenter\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\bin\Debug\Dyrehandel Database V2.exe.config
+C:\Users\cwalk\OneDrive\Dokumenter\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\bin\Debug\Dyrehandel Database V2.exe
+C:\Users\cwalk\OneDrive\Dokumenter\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\bin\Debug\Dyrehandel Database V2.pdb
+C:\Users\cwalk\OneDrive\Dokumenter\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\bin\Debug\Dapper.dll
+C:\Users\cwalk\OneDrive\Dokumenter\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\bin\Debug\System.Data.SQLite.dll
+C:\Users\cwalk\OneDrive\Dokumenter\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\bin\Debug\Dapper.xml
+C:\Users\cwalk\OneDrive\Dokumenter\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\bin\Debug\System.Data.SQLite.xml
+C:\Users\cwalk\OneDrive\Dokumenter\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\obj\Debug\Dyrehandel Database V2.csproj.AssemblyReference.cache
+C:\Users\cwalk\OneDrive\Dokumenter\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\obj\Debug\Dyrehandel Database V2.csproj.SuggestedBindingRedirects.cache
+C:\Users\cwalk\OneDrive\Dokumenter\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\obj\Debug\Dyrehandel Database V2.csproj.CoreCompileInputs.cache
+C:\Users\cwalk\OneDrive\Dokumenter\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\obj\Debug\Dyrehandel Database V2.csproj.CopyComplete
+C:\Users\cwalk\OneDrive\Dokumenter\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\obj\Debug\Dyrehandel Database V2.exe
+C:\Users\cwalk\OneDrive\Dokumenter\GitHub\Dyrebutik-SQL\Dyrehandel Database V2\Dyrehandel Database V2\obj\Debug\Dyrehandel Database V2.pdb

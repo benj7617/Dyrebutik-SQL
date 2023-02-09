@@ -35,6 +35,7 @@ namespace Dyrehandel_Database_V2
 
                 Console.WriteLine("Tryk 5 for at tilføje en vare: ");
                 Console.WriteLine("Tryk 6 for at vise varer: ");
+                Console.WriteLine("Tryk 7 for at fjerne et produkt");
 
                 Console.WriteLine("Tryk 0 for at lukke programmet: ");
 
@@ -97,6 +98,9 @@ namespace Dyrehandel_Database_V2
                         break;
                     case 6:
                         visProdukter();
+                        break;
+                    case 7:
+                        fjernProdukter();
                         break;
                     default:
                         break;
@@ -212,6 +216,15 @@ namespace Dyrehandel_Database_V2
             Console.WriteLine("");
             Console.WriteLine("Tryk 0 for at gå tilbage");
             Console.ReadKey();
+        }
+        private static void fjernProdukter()
+        {
+            Console.Clear();
+            for (int i = 0; i < Produkt.Count; i++)
+            {
+                Console.WriteLine("Produkt ID: " + Produkt[i].ProduktID)
+            }
+            
         }
     }
 }
