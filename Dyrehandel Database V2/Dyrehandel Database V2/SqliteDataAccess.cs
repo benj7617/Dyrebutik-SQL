@@ -71,7 +71,7 @@ namespace Dyrehandel_Database_V2
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("insert into Produkt (Antal, Kategori, Pris) values (@Antal, @Kategori, @Pris)", Produkt);
+                cnn.Execute("insert into Produkt (Antal, Kategori, Pris, ProduktNavn) values (@Antal, @Kategori, @Pris, @ProduktNavn)", Produkt);
             }
         }
 

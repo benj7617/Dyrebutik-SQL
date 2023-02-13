@@ -12,5 +12,6 @@ namespace Dyrehandel_Database_V2
         public int Antal { get; set; }
         public string Kategori { get; set; }
         public int Pris { get; set; }
+        public string ProduktNavn { get; set; }
     }
 }

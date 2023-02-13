@@ -17,8 +17,8 @@ namespace Dyrehandel_Database_V2
             //setup til switchboard
             bool isProgramExiting = false, isInputCorrect = false;
 
-            Console.WriteLine("Hej med dig det her er en butik med dyr, ikke en dyr butik heheheheheh");
-            Console.WriteLine("Delen med at tilføje og fjerne folk fra listen med consol appen er ikek færdig endnu, og den data der accepteres skal ændres fra default til det vi kan bruge");
+            Console.WriteLine("Hej med dig det her er en butik med dyr, ikke en dyr butik hehehehehe");
+            Console.WriteLine("Delen med at tilføje og fjerne folk fra listen med consol appen er ikke færdig endnu, og den data der accepteres skal ændres fra default til det vi kan bruge");
             Console.WriteLine("");
 
             //Switchboard pt. 1
@@ -26,21 +26,22 @@ namespace Dyrehandel_Database_V2
             {
                 Console.Clear();
                 Console.WriteLine("Du har følgende muligheder: ");
-
+                Console.WriteLine("");
                 Console.WriteLine("Tryk 1 for at tilføje en bruger: ");
                 Console.WriteLine("Tryk 2 for at vise brugere: ");
-
+                Console.WriteLine("");
                 Console.WriteLine("Tryk 3 for at tilføje en butik: ");
                 Console.WriteLine("Tryk 4 for at vise butikker: ");
                 Console.WriteLine("Tryk 5 for at vise hvilke vare en hvis butik har");
-
+                Console.WriteLine("");
                 Console.WriteLine("Tryk 6 for at tilføje en vare: ");
                 Console.WriteLine("Tryk 7 for at vise varer: ");
+                Console.WriteLine("");
                 Console.WriteLine("Tryk 8 for at fjerne et produkt");
                 Console.WriteLine("Tryk 9 for at sortere efter intast pris");
-                
+                Console.WriteLine("");
                 Console.WriteLine("Tryk 10 for at se pris for katte og hunde");
-
+                Console.WriteLine("");
                 Console.WriteLine("Tryk 0 for at lukke programmet: ");
 
                 //error Correction for switcboard
@@ -99,7 +100,7 @@ namespace Dyrehandel_Database_V2
                         break;
                     case 5:
                         visBestemButik();
-                        break
+                        break;
                     case 6:
                         tilføjProdukt();
                         break;
@@ -208,6 +209,8 @@ namespace Dyrehandel_Database_V2
                 p.Kategori = Console.ReadLine();
                 Console.WriteLine("Skriv Pris");
                 p.Pris = int.Parse(Console.ReadLine());
+                Console.WriteLine("Skriv Produktnavn");
+                p.ProduktNavn = Console.ReadLine();
 
                 SqliteDataAccess.SaveProdukt(p);
             }
@@ -224,7 +227,7 @@ namespace Dyrehandel_Database_V2
             //printer dem
             for (int i = 0; i < Produkt.Count; i++)
             {
-                Console.WriteLine("Produkt ID: " + Produkt[i].ProduktID + " Antal: " + Produkt[i].Antal + " I kategorien " + Produkt[i].Kategori + " " );
+                Console.WriteLine("Produkt ID: " + Produkt[i].ProduktID + " Produktnavn: " + Produkt[i].ProduktNavn + " Antal: " + Produkt[i].Antal + " I kategorien " + Produkt[i].Kategori + " " );
             }
             Console.WriteLine("");
             Console.WriteLine("Tryk 0 for at gå tilbage");
