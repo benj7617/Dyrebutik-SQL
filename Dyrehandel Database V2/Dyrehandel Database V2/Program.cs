@@ -30,7 +30,7 @@ namespace Dyrehandel_Database_V2
                 Console.WriteLine("1 - vis brugere: ");
                 Console.WriteLine("2 - vis butikker: ");
                 Console.WriteLine("3 - vis hvilke vare en hvis butik har");
-                Console.WriteLine("4 - vis varer: ");
+                Console.WriteLine("4 - vis produkter: ");
                 Console.WriteLine("5 - sorter efter intast pris");
                 Console.WriteLine("6 - se pris for katte og hunde");
                 Console.WriteLine("420 - admin panel");
@@ -76,12 +76,16 @@ namespace Dyrehandel_Database_V2
                         Console.WriteLine("");
                         Console.WriteLine("1 - tilføj en bruger: ");
                         Console.WriteLine("2 - tilføj en butik: ");
-                        Console.WriteLine("3 - tilføj en vare: ");
-                        Console.WriteLine("4 - fjern et produkt"); //BROKEN
+                        Console.WriteLine("3 - tilføj et produkt: ");
+
+                        Console.WriteLine("4 - fjern en kunde");
+                        Console.WriteLine("5 - fjern en butik");
+                        Console.WriteLine("6 - fjern et produkt");
+
                         Console.WriteLine("");
                         Console.WriteLine("0 - tilbage: ");
 
-                        switch (switchboardStuff(isProgramExiting, isInputCorrect, numberInput, 4))
+                        switch (switchboardStuff(isProgramExiting, isInputCorrect, numberInput, 6))
                         {
                             case 1:
                                 tilføjBruger();
@@ -93,6 +97,12 @@ namespace Dyrehandel_Database_V2
                                 tilføjProdukt();
                                 break;
                             case 4:
+                                fjernKunde();
+                                break;
+                            case 5:
+                                fjernButik();
+                                break;
+                            case 6:
                                 fjernProdukter();
                                 break;
                             case 0:
@@ -219,6 +229,7 @@ namespace Dyrehandel_Database_V2
             Console.WriteLine("Tryk 0 for at gå tilbage");
             Console.ReadKey();
         }
+
         private static void fjernProdukter()
         {
             Console.Clear();
@@ -248,6 +259,68 @@ namespace Dyrehandel_Database_V2
 
             Console.ReadKey();
         }
+
+        private static void fjernKunde()
+        {
+            Console.Clear();
+
+            //Viser alle eksisterende kunder
+            for (int i = 0; i < Kunde.Count; i++)
+            {
+                Console.WriteLine(Kunde[i].KundeID + " " + Kunde[i].Navn + " som bor på " + Kunde[i].Adresse + " i " + Kunde[i].By + " med postnummeret " + Kunde[i].Postnummer);
+            }
+            Console.WriteLine("");
+
+            //skaber en kundemodel for at fortælle databasen hvilken en der skal slettes
+            KundeModel p = new KundeModel();
+            try
+            {
+                Console.WriteLine("Skriv KundeID");
+                p.KundeID = int.Parse(Console.ReadLine());
+
+                SqliteDataAccess.fjernKunde(p);
+                Console.WriteLine("Done");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Eow din adam du gjorde noget forkert. Error SletKunde");
+                throw;
+            }
+
+            Console.ReadKey();
+        }
+
+        private static void fjernButik()
+        {
+            Console.Clear();
+
+            //Viser alle eksisterende kunder
+            for (int i = 0; i < Butik.Count; i++)
+            {
+                Console.WriteLine("Butik nr. " + Butik[i].ButikID + " som ligger i " + Butik[i].Adresse + " " + Butik[i].Postnummer + " " + Butik[i].By);
+            }
+            Console.WriteLine("");
+
+            //skaber en kundemodel for at fortælle databasen hvilken en der skal slettes
+            ButikModel p = new ButikModel();
+            try
+            {
+                Console.WriteLine("Skriv ButikID");
+                p.ButikID = int.Parse(Console.ReadLine());
+
+                SqliteDataAccess.fjernButik(p);
+                Console.WriteLine("Done");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Eow din adam du gjorde noget forkert. Error SletButik");
+                throw;
+            }
+
+            Console.ReadKey();
+        }
+
+
         private static void visBestemButik()
         {
 

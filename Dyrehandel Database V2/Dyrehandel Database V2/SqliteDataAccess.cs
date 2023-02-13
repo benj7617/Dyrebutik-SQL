@@ -83,5 +83,20 @@ namespace Dyrehandel_Database_V2
             }
         }
 
+        public static void fjernKunde(KundeModel Kunde) //fjern et eksisterende produkt
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("delete from Kunde where KundeID=@KundeID", Kunde);
+            }
+        }
+
+        public static void fjernButik(ButikModel Butik) //fjern et eksisterende produkt
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("delete from Butik where ButikID=@ButikID", Butik);
+            }
+        }
     }
 }
