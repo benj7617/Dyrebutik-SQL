@@ -75,11 +75,11 @@ namespace Dyrehandel_Database_V2
             }
         }
 
-        public static void fjernProdukt() //fjern et eksisterende produkt
+        public static void fjernProdukt(ProduktModel Produkt) //fjern et eksisterende produkt
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Query("delete from Produkt where Kategori=1");
+                cnn.Execute("delete from Produkt where ProduktID=@ProduktID", Produkt);
             }
         }
 

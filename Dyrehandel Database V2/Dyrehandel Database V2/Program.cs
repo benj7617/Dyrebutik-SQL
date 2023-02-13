@@ -77,7 +77,7 @@ namespace Dyrehandel_Database_V2
                         Console.WriteLine("1 - tilføj en bruger: ");
                         Console.WriteLine("2 - tilføj en butik: ");
                         Console.WriteLine("3 - tilføj en vare: ");
-                        Console.WriteLine("4 - fjern et produkt");
+                        Console.WriteLine("4 - fjern et produkt"); //BROKEN
                         Console.WriteLine("");
                         Console.WriteLine("0 - tilbage: ");
 
@@ -221,14 +221,31 @@ namespace Dyrehandel_Database_V2
         }
         private static void fjernProdukter()
         {
-            
-            /*Console.WriteLine("Vælg produkt id som skal fjernes");
-            Console.WriteLine("");
+            Console.Clear();
+
+            //Viser alle eksisterende produkter
             for (int i = 0; i < Produkt.Count; i++)
             {
-                Console.WriteLine("Produkt ID: " + Produkt[i].ProduktID);
-            }*/
-            fjernProdukter();
+                Console.WriteLine("Produkt ID: " + Produkt[i].ProduktID + " Produktnavn: " + Produkt[i].ProduktNavn + " Antal: " + Produkt[i].Antal + " I kategorien " + Produkt[i].Kategori + " ");
+            }
+            Console.WriteLine("");
+
+            //skaber en produktmodel for at fortælle databasen hvilken en der skal slettes
+            ProduktModel p = new ProduktModel();
+            try
+            {
+                Console.WriteLine("Skriv ProduktID");
+                p.ProduktID = int.Parse(Console.ReadLine());
+
+                SqliteDataAccess.fjernProdukt(p);
+                Console.WriteLine("Done");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Eow din adam du gjorde noget forkert. Error SletProdukt");
+                throw;
+            }
+
             Console.ReadKey();
         }
         private static void visBestemButik()
