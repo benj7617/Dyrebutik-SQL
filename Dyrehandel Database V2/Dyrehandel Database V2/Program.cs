@@ -27,22 +27,16 @@ namespace Dyrehandel_Database_V2
                 Console.Clear();
                 Console.WriteLine("Du har følgende muligheder: ");
                 Console.WriteLine("");
-                Console.WriteLine("Tryk 1 for at tilføje en bruger: ");
-                Console.WriteLine("Tryk 2 for at vise brugere: ");
+                Console.WriteLine("1 - vis brugere: ");
+                Console.WriteLine("2 - vis butikker: ");
+                Console.WriteLine("3 - vis hvilke vare en hvis butik har");
+                Console.WriteLine("4 - vis varer: ");
+                Console.WriteLine("5 - sorter efter intast pris");
+                Console.WriteLine("6 - se pris for katte og hunde");
+                Console.WriteLine("420 - admin panel");
                 Console.WriteLine("");
-                Console.WriteLine("Tryk 3 for at tilføje en butik: ");
-                Console.WriteLine("Tryk 4 for at vise butikker: ");
-                Console.WriteLine("Tryk 5 for at vise hvilke vare en hvis butik har");
-                Console.WriteLine("");
-                Console.WriteLine("Tryk 6 for at tilføje en vare: ");
-                Console.WriteLine("Tryk 7 for at vise varer: ");
-                Console.WriteLine("");
-                Console.WriteLine("Tryk 8 for at fjerne et produkt");
-                Console.WriteLine("Tryk 9 for at sortere efter intast pris");
-                Console.WriteLine("");
-                Console.WriteLine("Tryk 10 for at se pris for katte og hunde");
-                Console.WriteLine("");
-                Console.WriteLine("Tryk 0 for at lukke programmet: ");
+                Console.WriteLine("0 - luk programmet: ");
+                
 
                 //error Correction for switcboard
                 int numberInput = -1;
@@ -59,7 +53,7 @@ namespace Dyrehandel_Database_V2
                     try
                     {
                         numberInput = int.Parse(userInput);
-                        if (numberInput >= 0 && numberInput <= 10)
+                        if (numberInput >= 0 && numberInput <= 6 | numberInput == 420)
                         {
                             isInputCorrect = true;
                         }
@@ -87,34 +81,85 @@ namespace Dyrehandel_Database_V2
                         Console.ReadKey();
                         break;
                     case 1:
-                        tilføjBruger();
-                        break;
-                    case 2:
                         visBrugere();
                         break;
-                    case 3:
-                        tilføjButik();
-                        break;
-                    case 4:
+                    case 2:
                         visButikker();
                         break;
-                    case 5:
+                    case 3:
                         visBestemButik();
                         break;
-                    case 6:
-                        tilføjProdukt();
-                        break;
-                    case 7:
+                    case 4:
                         visProdukter();
                         break;
-                    case 8:
-                        fjernProdukter();
-                        break;
-                    case 9:
+                    case 5:
                         sorterProdukter();
                         break;
-                    case 10:
+                    case 6:
                         hundKat();
+                        break;
+                    case 420: //Admin panel
+                        Console.Clear();
+
+                        isInputCorrect= false; //til error correction i det nye switchboard
+
+                        Console.WriteLine("Velkommen til Admin panelet");
+                        Console.WriteLine("");
+                        Console.WriteLine("1 - tilføj en bruger: ");
+                        Console.WriteLine("2 - tilføj en butik: ");
+                        Console.WriteLine("3 - tilføj en vare: ");
+                        Console.WriteLine("4 - fjern et produkt");
+                        Console.WriteLine("");
+                        Console.WriteLine("0 - tilbage: ");
+
+                        while (!isInputCorrect)
+                        {
+                            //Loader databaserne
+                            Kunde = SqliteDataAccess.LoadKunde();
+                            Butik = SqliteDataAccess.LoadButik();
+                            Produkt = SqliteDataAccess.LoadProdukt();
+
+                            string userInput = Console.ReadLine();
+
+                            try
+                            {
+                                numberInput = int.Parse(userInput);
+                                if (numberInput >= 0 && numberInput <= 4)
+                                {
+                                    isInputCorrect = true;
+                                }
+                                else
+                                {
+                                    throw new Exception();
+                                }
+                            }
+                            catch (FormatException e)
+                            {
+                                Console.WriteLine("Indtast venligst et tal for det valg du vil tage");
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Indtast venligst et tal mellem 0 og 11 - Error: Switchboard2");
+                            }
+                        }
+
+                        switch (numberInput)
+                        {
+                            case 1:
+                                tilføjBruger();
+                                break;
+                            case 2:
+                                tilføjButik();
+                                break;
+                            case 3:
+                                tilføjProdukt();
+                                break;
+                            case 4:
+                                fjernProdukter();
+                                break;
+                            case 0:
+                                break;
+                        } ///Admin Panel
                         break;
                     default:
                         break;
