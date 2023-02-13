@@ -14,13 +14,13 @@ namespace Dyrehandel_Database_V2
 
         static void Main(string[] args)
         {
-            //setup til switchboard
-            bool isProgramExiting = false, isInputCorrect = false;
-
             Console.WriteLine("Hej med dig det her er en butik med dyr, ikke en dyr butik hehehehehe");
             Console.WriteLine("Delen med at tilføje og fjerne folk fra listen med consol appen er ikke færdig endnu, og den data der accepteres skal ændres fra default til det vi kan bruge");
             Console.WriteLine("");
 
+            //setup til switchboard
+            bool isProgramExiting = false, isInputCorrect = false;
+            int numberInput = -1;
             //Switchboard pt. 1
             while (!isProgramExiting)
             {
@@ -38,67 +38,36 @@ namespace Dyrehandel_Database_V2
                 Console.WriteLine("0 - luk programmet: ");
                 
 
-                //error Correction for switcboard
-                int numberInput = -1;
+                //error Correction for switcboard                
                 isInputCorrect = false;
-                while (!isInputCorrect)
-                {
-                    //Loader databaserne
-                    Kunde = SqliteDataAccess.LoadKunde();
-                    Butik = SqliteDataAccess.LoadButik();
-                    Produkt = SqliteDataAccess.LoadProdukt();
-
-                    string userInput = Console.ReadLine();
-
-                    try
-                    {
-                        numberInput = int.Parse(userInput);
-                        if (numberInput >= 0 && numberInput <= 6 | numberInput == 420)
-                        {
-                            isInputCorrect = true;
-                        }
-                        else
-                        {
-                            throw new Exception();
-                        }
-                    }
-                    catch (FormatException e)
-                    {
-                        Console.WriteLine("Indtast venligst et tal for det valg du vil tage");
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("Indtast venligst et tal mellem 0 og 11");
-                    }
-                }
 
                 //Switchboard pt. 2
-                switch (numberInput)
+                switch (switchboardStuff(isProgramExiting, isInputCorrect, numberInput, 6))
                 {
                     case 0:
                         Console.WriteLine("Programmet lukker nu.");
                         isProgramExiting = true;
                         Console.ReadKey();
                         break;
-                    case 1:
+                    case 1: //virker
                         visBrugere();
                         break;
-                    case 2:
+                    case 2: //virker
                         visButikker();
                         break;
-                    case 3:
+                    case 3: //BROKEN
                         visBestemButik();
                         break;
-                    case 4:
+                    case 4: //virker
                         visProdukter();
                         break;
-                    case 5:
+                    case 5: //BORKEN
                         sorterProdukter();
                         break;
-                    case 6:
+                    case 6: //BROKEN
                         hundKat();
                         break;
-                    case 420: //Admin panel
+                    case 420: //, virker Admin panel
                         Console.Clear();
 
                         isInputCorrect= false; //til error correction i det nye switchboard
@@ -112,38 +81,7 @@ namespace Dyrehandel_Database_V2
                         Console.WriteLine("");
                         Console.WriteLine("0 - tilbage: ");
 
-                        while (!isInputCorrect)
-                        {
-                            //Loader databaserne
-                            Kunde = SqliteDataAccess.LoadKunde();
-                            Butik = SqliteDataAccess.LoadButik();
-                            Produkt = SqliteDataAccess.LoadProdukt();
-
-                            string userInput = Console.ReadLine();
-
-                            try
-                            {
-                                numberInput = int.Parse(userInput);
-                                if (numberInput >= 0 && numberInput <= 4)
-                                {
-                                    isInputCorrect = true;
-                                }
-                                else
-                                {
-                                    throw new Exception();
-                                }
-                            }
-                            catch (FormatException e)
-                            {
-                                Console.WriteLine("Indtast venligst et tal for det valg du vil tage");
-                            }
-                            catch (Exception e)
-                            {
-                                Console.WriteLine("Indtast venligst et tal mellem 0 og 11 - Error: Switchboard2");
-                            }
-                        }
-
-                        switch (numberInput)
+                        switch (switchboardStuff(isProgramExiting, isInputCorrect, numberInput, 4))
                         {
                             case 1:
                                 tilføjBruger();
@@ -158,6 +96,9 @@ namespace Dyrehandel_Database_V2
                                 fjernProdukter();
                                 break;
                             case 0:
+                                break;
+                            case 420:
+                                Console.WriteLine("Du er her squda allerede");
                                 break;
                         } ///Admin Panel
                         break;
@@ -301,6 +242,40 @@ namespace Dyrehandel_Database_V2
         private static void hundKat()
         {
 
+        }
+        private static int switchboardStuff(bool isProgramExiting, bool isInputCorrect, int numberInput, int a)
+        {
+            while (!isInputCorrect)
+            {
+                //Loader databaserne
+                Kunde = SqliteDataAccess.LoadKunde();
+                Butik = SqliteDataAccess.LoadButik();
+                Produkt = SqliteDataAccess.LoadProdukt();
+
+                string userInput = Console.ReadLine();
+
+                try
+                {
+                    numberInput = int.Parse(userInput);
+                    if (numberInput >= 0 && numberInput <= a | numberInput == 420)
+                    {
+                        isInputCorrect = true;
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine("Indtast venligst et tal for det valg du vil tage");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Indtast venligst et tal mellem 0 og 11");
+                }
+            }
+            return numberInput;
         }
     }
 }
