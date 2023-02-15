@@ -99,14 +99,15 @@ namespace Dyrehandel_Database_V2
             }
         }
 
-        /*public static List<ProduktModel> prisProdukt(ProduktModel Produkt) //skab liste over produkter
+        public static List<ProduktModel> HundKat()
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<ProduktModel>("select * from Produkt where Pris < @Pris", new DynamicParameters());
+                var output = cnn.Query<ProduktModel>("select * from Produkt where Kategori='kat' or Kategori='hund' or Kategori='Kat' or Kategori='Hund'", new DynamicParameters());
                 return output.ToList();
             }
-        }*/
+        }
+
     }
 
 }

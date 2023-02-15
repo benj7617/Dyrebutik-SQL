@@ -11,6 +11,7 @@ namespace Dyrehandel_Database_V2
         public static List<KundeModel> Kunde;
         public static List<ButikModel> Butik;
         public static List<ProduktModel> Produkt;
+        public static List<ProduktModel> HundKat;
 
         static void Main(string[] args)
         {
@@ -32,7 +33,7 @@ namespace Dyrehandel_Database_V2
                 Console.WriteLine("3 - vis hvilke vare en hvis butik har");
                 Console.WriteLine("4 - vis produkter: ");
                 Console.WriteLine("5 - sorter efter intast pris");
-                Console.WriteLine("6 - se pris for katte og hunde");
+                Console.WriteLine("6 - se katte og hunde");
                 Console.WriteLine("420 - admin panel");
                 Console.WriteLine("");
                 Console.WriteLine("0 - luk programmet: ");
@@ -327,7 +328,7 @@ namespace Dyrehandel_Database_V2
         }
         private static void sorterProdukter()
         {
-
+        //jeg ved godt det ville være bedre at bruge linq, men det var bare så nemt at lave en if statement
             try
             {
                 Console.WriteLine("Skriv maksimumsPris");
@@ -353,7 +354,15 @@ namespace Dyrehandel_Database_V2
         }
         private static void hundKat()
         {
-
+            Console.Clear();
+            //printer dem
+            for (int i = 0; i < HundKat.Count; i++)
+            {
+                Console.WriteLine("Produkt ID: " + HundKat[i].ProduktID + " der er " + HundKat[i].Antal + " stks. " + HundKat[i].ProduktNavn + " for " + HundKat[i].Pris + " pr. styk, Kategori: " + HundKat[i].Kategori);
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Tryk 0 for at gå tilbage");
+            Console.ReadKey();
         }
         private static int switchboardStuff(bool isProgramExiting, bool isInputCorrect, int numberInput, int a)
         {
@@ -363,6 +372,7 @@ namespace Dyrehandel_Database_V2
                 Kunde = SqliteDataAccess.LoadKunde();
                 Butik = SqliteDataAccess.LoadButik();
                 Produkt = SqliteDataAccess.LoadProdukt();
+                HundKat = SqliteDataAccess.HundKat();
 
                 string userInput = Console.ReadLine();
 
