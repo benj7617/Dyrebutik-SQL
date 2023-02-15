@@ -83,7 +83,7 @@ namespace Dyrehandel_Database_V2
             }
         }
 
-        public static void fjernKunde(KundeModel Kunde) //fjern et eksisterende produkt
+        public static void fjernKunde(KundeModel Kunde) //fjern et eksisterende Kunde
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -91,12 +91,22 @@ namespace Dyrehandel_Database_V2
             }
         }
 
-        public static void fjernButik(ButikModel Butik) //fjern et eksisterende produkt
+        public static void fjernButik(ButikModel Butik) //fjern et eksisterende Butik
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 cnn.Execute("delete from Butik where ButikID=@ButikID", Butik);
             }
         }
+
+        /*public static List<ProduktModel> prisProdukt(ProduktModel Produkt) //skab liste over produkter
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<ProduktModel>("select * from Produkt where Pris < @Pris", new DynamicParameters());
+                return output.ToList();
+            }
+        }*/
     }
+
 }

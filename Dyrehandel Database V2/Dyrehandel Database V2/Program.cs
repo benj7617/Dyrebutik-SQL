@@ -150,7 +150,7 @@ namespace Dyrehandel_Database_V2
             Console.Clear();
             //printer dem
             for (int i = 0; i < Kunde.Count; i++)
-            {
+            {   
                 Console.WriteLine(Kunde[i].Navn + " som bor på " + Kunde[i].Adresse + " i " + Kunde[i].By + " med postnummeret " + Kunde[i].Postnummer);
             }
             Console.WriteLine("");
@@ -223,7 +223,7 @@ namespace Dyrehandel_Database_V2
             //printer dem
             for (int i = 0; i < Produkt.Count; i++)
             {
-                Console.WriteLine("Produkt ID: " + Produkt[i].ProduktID + " Produktnavn: " + Produkt[i].ProduktNavn + " Antal: " + Produkt[i].Antal + " I kategorien " + Produkt[i].Kategori + " " );
+                Console.WriteLine("Produkt ID: " + Produkt[i].ProduktID + " der er " + Produkt[i].Antal + " stks. " + Produkt[i].ProduktNavn + " for " + Produkt[i].Pris + " pr. styk, Kategori: " + Produkt[i].Kategori);
             }
             Console.WriteLine("");
             Console.WriteLine("Tryk 0 for at gå tilbage");
@@ -328,6 +328,28 @@ namespace Dyrehandel_Database_V2
         private static void sorterProdukter()
         {
 
+            try
+            {
+                Console.WriteLine("Skriv maksimumsPris");
+                int pris = int.Parse(Console.ReadLine());
+
+                for (int i = 0; i < Produkt.Count; i++)
+                {
+                    if (Produkt[i].Pris <= pris)
+                    {
+                        Console.WriteLine("Produkt ID: " + Produkt[i].ProduktID + " der er " + Produkt[i].Antal + " stks. " + Produkt[i].ProduktNavn + " for " + Produkt[i].Pris + " pr. styk, Kategori: " + Produkt[i].Kategori);
+                    }
+                }
+                Console.WriteLine("");
+                Console.WriteLine("Tryk 0 for at gå tilbage");
+                Console.ReadKey();
+
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Eow din adam du gjorde noget forkert. Error sorterProdukter");
+                throw;
+            }
         }
         private static void hundKat()
         {
