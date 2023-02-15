@@ -82,11 +82,12 @@ namespace Dyrehandel_Database_V2
                         Console.WriteLine("4 - fjern en kunde");
                         Console.WriteLine("5 - fjern en butik");
                         Console.WriteLine("6 - fjern et produkt");
+                        Console.WriteLine("7 - vis alt");
 
                         Console.WriteLine("");
                         Console.WriteLine("0 - tilbage: ");
 
-                        switch (switchboardStuff(isProgramExiting, isInputCorrect, numberInput, 6))
+                        switch (switchboardStuff(isProgramExiting, isInputCorrect, numberInput, 7))
                         {
                             case 1:
                                 tilføjBruger();
@@ -105,6 +106,9 @@ namespace Dyrehandel_Database_V2
                                 break;
                             case 6:
                                 fjernProdukter();
+                                break;
+                            case 7:
+                                visAlt();
                                 break;
                             case 0:
                                 break;
@@ -159,6 +163,37 @@ namespace Dyrehandel_Database_V2
             Console.ReadKey();
         }
 
+        private static void fjernKunde()
+        {
+            Console.Clear();
+
+            //Viser alle eksisterende kunder
+            for (int i = 0; i < Kunde.Count; i++)
+            {
+                Console.WriteLine(Kunde[i].KundeID + " " + Kunde[i].Navn + " som bor på " + Kunde[i].Adresse + " i " + Kunde[i].By + " med postnummeret " + Kunde[i].Postnummer);
+            }
+            Console.WriteLine("");
+
+            //skaber en kundemodel for at fortælle databasen hvilken en der skal slettes
+            KundeModel p = new KundeModel();
+            try
+            {
+                Console.WriteLine("Skriv KundeID");
+                p.KundeID = int.Parse(Console.ReadLine());
+
+                SqliteDataAccess.fjernKunde(p);
+                Console.WriteLine("Done");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Eow din adam du gjorde noget forkert. Error SletKunde");
+                throw;
+            }
+
+            Console.ReadKey();
+        }
+
+
         private static void tilføjButik()
         {
             ButikModel p = new ButikModel();
@@ -193,6 +228,37 @@ namespace Dyrehandel_Database_V2
             Console.WriteLine("Tryk 0 for at gå tilbage");
             Console.ReadKey();
         }
+
+        private static void fjernButik()
+        {
+            Console.Clear();
+
+            //Viser alle eksisterende kunder
+            for (int i = 0; i < Butik.Count; i++)
+            {
+                Console.WriteLine("Butik nr. " + Butik[i].ButikID + " som ligger i " + Butik[i].Adresse + " " + Butik[i].Postnummer + " " + Butik[i].By);
+            }
+            Console.WriteLine("");
+
+            //skaber en kundemodel for at fortælle databasen hvilken en der skal slettes
+            ButikModel p = new ButikModel();
+            try
+            {
+                Console.WriteLine("Skriv ButikID");
+                p.ButikID = int.Parse(Console.ReadLine());
+
+                SqliteDataAccess.fjernButik(p);
+                Console.WriteLine("Done");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Eow din adam du gjorde noget forkert. Error SletButik");
+                throw;
+            }
+
+            Console.ReadKey();
+        }
+
 
         private static void tilføjProdukt()
         {
@@ -255,66 +321,6 @@ namespace Dyrehandel_Database_V2
             catch (Exception)
             {
                 Console.WriteLine("Eow din adam du gjorde noget forkert. Error SletProdukt");
-                throw;
-            }
-
-            Console.ReadKey();
-        }
-
-        private static void fjernKunde()
-        {
-            Console.Clear();
-
-            //Viser alle eksisterende kunder
-            for (int i = 0; i < Kunde.Count; i++)
-            {
-                Console.WriteLine(Kunde[i].KundeID + " " + Kunde[i].Navn + " som bor på " + Kunde[i].Adresse + " i " + Kunde[i].By + " med postnummeret " + Kunde[i].Postnummer);
-            }
-            Console.WriteLine("");
-
-            //skaber en kundemodel for at fortælle databasen hvilken en der skal slettes
-            KundeModel p = new KundeModel();
-            try
-            {
-                Console.WriteLine("Skriv KundeID");
-                p.KundeID = int.Parse(Console.ReadLine());
-
-                SqliteDataAccess.fjernKunde(p);
-                Console.WriteLine("Done");
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Eow din adam du gjorde noget forkert. Error SletKunde");
-                throw;
-            }
-
-            Console.ReadKey();
-        }
-
-        private static void fjernButik()
-        {
-            Console.Clear();
-
-            //Viser alle eksisterende kunder
-            for (int i = 0; i < Butik.Count; i++)
-            {
-                Console.WriteLine("Butik nr. " + Butik[i].ButikID + " som ligger i " + Butik[i].Adresse + " " + Butik[i].Postnummer + " " + Butik[i].By);
-            }
-            Console.WriteLine("");
-
-            //skaber en kundemodel for at fortælle databasen hvilken en der skal slettes
-            ButikModel p = new ButikModel();
-            try
-            {
-                Console.WriteLine("Skriv ButikID");
-                p.ButikID = int.Parse(Console.ReadLine());
-
-                SqliteDataAccess.fjernButik(p);
-                Console.WriteLine("Done");
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Eow din adam du gjorde noget forkert. Error SletButik");
                 throw;
             }
 
@@ -398,6 +404,31 @@ namespace Dyrehandel_Database_V2
                 }
             }
             return numberInput;
+        }
+
+        private static void visAlt()
+        {
+            Console.Clear();
+            //printer dem
+            for (int i = 0; i < Produkt.Count; i++)
+            {
+                Console.WriteLine("Produkt ID: " + Produkt[i].ProduktID + " der er " + Produkt[i].Antal + " stks. " + Produkt[i].ProduktNavn + " for " + Produkt[i].Pris + " pr. styk, Kategori: " + Produkt[i].Kategori);
+            }
+            Console.WriteLine("");
+
+            for (int i = 0; i < Butik.Count; i++)
+            {
+                Console.WriteLine("Butik nr. " + Butik[i].ButikID + " som ligger i " + Butik[i].Adresse + " " + Butik[i].Postnummer + " " + Butik[i].By);
+            }
+            Console.WriteLine("");
+
+            for (int i = 0; i < Kunde.Count; i++)
+            {
+                Console.WriteLine(Kunde[i].Navn + " som bor på " + Kunde[i].Adresse + " i " + Kunde[i].By + " med postnummeret " + Kunde[i].Postnummer);
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Tryk 0 for at gå tilbage");
+            Console.ReadKey();
         }
     }
 }
